@@ -1,5 +1,40 @@
 var el = x => document.getElementById(x);
 
+var urlmap = {
+  "Douglas Fir":"http://nwconifers.com/nwlo/douglas-fir.htm",
+  "Western Hemlock":"http://nwconifers.com/nwlo/whemlock.htm",
+  "Mountain Hemlock":"http://nwconifers.com/nwhi/mthemlock.htm",
+  "Grand Fir":"http://nwconifers.com/nwlo/grandfir.htm",
+  "Noble Fir":"http://nwconifers.com/nwhi/noblefir.htm",
+  "Pacific Silver Fir":"http://nwconifers.com/nwhi/silverfir.htm",
+  "Subalpine Fir":"http://nwconifers.com/nwhi/subalpinefir.htm",
+  "White Fir":"http://nwconifers.com/sw/whitefir.htm",
+  "Red Fir":"http://nwconifers.com/sw/redfir.htm",
+  "Ponderosa Pine":"http://nwconifers.com/nwlo/ponderosa.htm",
+  "Lodgepole Pine":"http://nwconifers.com/nwlo/lodgepole.htm",
+  "Western White Pine":"http://nwconifers.com/nwhi/wwhitepine.htm",
+  "Whitebark Pine":"http://nwconifers.com/nwhi/whitebarkpine.htm",
+  "Jeffrey Pine":"http://nwconifers.com/sw/jeffrey.htm",
+  "Knobcone Pine":"http://nwconifers.com/sw/knobcone.htm",
+  "Sugar Pine":"http://nwconifers.com/sw/sugarpine.htm",
+  "Limber Pine":"http://nwconifers.com/east/limberpine.htm",
+  "Sitka Spruce":"http://nwconifers.com/nwlo/sitka.htm",
+  "Engelmann Spruce":"http://nwconifers.com/nwhi/engelmann.htm",
+  "Brewer Spruce":"http://nwconifers.com/sw/brewer.htm",
+  "Western Larch":"http://nwconifers.com/nwhi/wlarch.htm",
+  "Alpine Larch": "http://nwconifers.com/nwhi/alpinelarch.htm",
+  "true cedars":"http://nwconifers.com/imports/deodar.htm",
+  "Western Red Cedar":"http://nwconifers.com/nwlo/wredcedar.htm",
+  "Incense Cedar":"http://nwconifers.com/nwhi/incense.htm",
+  "Alaska Cedar":"http://nwconifers.com/nwhi/alaskacedar.htm",
+  "Port Orford Cedar":"http://nwconifers.com/sw/portorfordcedar.htm",
+  "Modoc Cypress":"http://nwconifers.com/sw/modoccypress.htm",
+  "Western Juniper":"http://nwconifers.com/east/wjuniper.htm",
+  "Rocky Mountain Juniper":"http://nwconifers.com/east/rockymtjuniper.htm",
+  "Redwood":"http://nwconifers.com/sw/redwood.htm",
+  "Pacific Yew":"http://nwconifers.com/nwlo/yew.htm"
+}
+
 function showPicker() {
   el("file-input").click();
 }
@@ -29,8 +64,8 @@ function analyze() {
   xhr.onload = function(e) {
     if (this.readyState === 4) {
       var response = JSON.parse(e.target.responseText);
-      el("result-label").innerHTML = `${response["result"]}`;
-      el("result-label").href = "http://nwconifers.com/info/overview.htm";
+      el("result-id").innerHTML = `${response["result"]}`;
+      el("result-id").href = urlmap[response["result"]];
     }
     el("analyze-button").innerHTML = "Analyze";
   };
